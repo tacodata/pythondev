@@ -22,6 +22,7 @@ RUN /bin/echo 'set editing-mode vi' > /root/.inputrc
 
 # set up a gfausak user
 RUN useradd gfausak -m -g staff -s /bin/bash &&\
+	usermod -a -G sudo gfausak &&\
 	/bin/echo 'set editing-mode vi' > /home/gfausak/.inputrc &&\
 	mkdir /home/gfausak/.ssh &&\
 	mkdir /home/gfausak/git &&\
