@@ -35,7 +35,7 @@ RUN git config --global user.name "Greg Fausak" && \
 	git config --global core.editor vi &&\
 	git config --global push.default simple
 
-WORKDIR /home/gfausak
-USER gfausak
+#WORKDIR /home/gfausak
+#USER gfausak
 
 CMD [ '/bin/bash' ]
