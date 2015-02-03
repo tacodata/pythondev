@@ -21,6 +21,7 @@ RUN /bin/echo 'set editing-mode vi' > ~root/.inputrc
 RUN git config --global user.name "Greg Fausak"
 RUN git config --global user.email greg@tacodata.com
 RUN git config --global core.editor vi
+RUN git config --global push.default simple
 
 
 CMD [ '/bin/bash' ]
