@@ -4,12 +4,11 @@ MAINTAINER Greg Fausak <greg@tacodata.com>
 
 # the update is needed to get the sources.list set right, otherwise we
 # won't find anything to get.
-RUN apt-get update
-RUN apt-get -y install \
+RUN apt-get update && apt-get -y install \
 	build-essential \
+	git \
 	python-dev \
-	python-pip \
-	git
+	python-pip
 
 # when you run grip, do it in the directory with the README.md file
 # in it.  simply type 'grip', then browse to port 5000 to see what the README.md
@@ -17,11 +16,15 @@ RUN apt-get -y install \
 RUN pip install grip
 EXPOSE 5000
 
+# when using bash in this image as root i like to have
+# vi based history from the command line
 RUN /bin/echo 'set editing-mode vi' > ~root/.inputrc
-RUN git config --global user.name "Greg Fausak"
-RUN git config --global user.email greg@tacodata.com
-RUN git config --global core.editor vi
-RUN git config --global push.default simple
+
+# git configuration for me, obviously, change for someone else :-)
+RUN git config --global user.name "Greg Fausak" && \
+	git config --global user.email greg@tacodata.com &&\
+	git config --global core.editor vi &&\
+	git config --global push.default simple
 
 
 CMD [ '/bin/bash' ]
